@@ -39,4 +39,7 @@ typedef struct s_variables
 
 }			t_variables;
 
+void	initialize_variables(t_variables *var);
+void	draw_scren(t_variables *var);
+
 #endif
