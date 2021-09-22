@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/21 19:44:52 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:46:20 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ void	initialize_variables(t_variables *var)
 	var->y = 0;
 	var->row = 0;
 	var->max = 50;
+	var->zoom_max = 700;
+	var->zoom_min = 700;
 }

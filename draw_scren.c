@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:55 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/21 19:41:56 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:50:25 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ void	draw_frac(t_variables *var)
 		var->iteration++;
 	}
 	if (var->iteration < var->max)
-		var->img.data[var->col * IMG_WIDTH + var->row] \
-		= 0xfffff + var->iteration * 3.5;
+		var->img.data[var->col * var->zoom_max + var->row] \
+		= 0xfffff + var->iteration * 4.5;
 	else
-		var->img.data[var->col * IMG_WIDTH + var->row] = 0x00000;
+		var->img.data[var->col * var->zoom_max + var->row] = 0x00000;
 	var->col++;
 }
 
 void	draw_scren(t_variables *var)
 {
-	while (var->row < IMG_HEIGHT)
+	while (var->row < var->zoom_max)
 	{
 		var->col = 0;
-		while (var->col < IMG_WIDTH)
+		while (var->col < var->zoom_max)
 		{
-			var->c_re = (var->row - IMG_WIDTH / 2.0) * 4.0 / IMG_WIDTH;
-			var->c_im = (var->col - IMG_HEIGHT / 2.0) * 4.0 / IMG_WIDTH;
+			var->c_re = (var->row - var->zoom_max / 2.0) * 4.0 / var->zoom_max;
+			var->c_im = (var->col - var->zoom_max / 2.0) * 4.0 / var->zoom_max;
 			var->x = 0;
 			var->y = 0;
 			var->iteration = 0;

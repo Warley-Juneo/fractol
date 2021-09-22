@@ -6,18 +6,16 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/21 19:41:44 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 22:47:04 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 1000
+# define WIN_WIDTH 700
+# define WIN_HEIGHT 500
 
-# define IMG_WIDTH 1000
-# define IMG_HEIGHT 1000
 
 typedef struct	s_img
 {
@@ -45,6 +43,8 @@ typedef struct s_variables
 	int		row;
 	int		col;
 	int		max;
+	int		zoom_max;
+	int		zoom_min;
 
 	t_img	img;
 	t_mlx	*mlx;
