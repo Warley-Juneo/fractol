@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/09/21 20:38:22 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/09/21 21:26:53 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@ MINILIBX	= $(MINILIBX_PATH)/libmlx.a
 
 SOURCE			= fractol.c draw_scren.c initialize_variable.c
 
-HEADER			= fractol.h
+
 OBJECTS			= $(SOURCE:.c=.o)
 
+HEADER			= fractol.h
 NAME			= fractol
 
 CC				= clang
