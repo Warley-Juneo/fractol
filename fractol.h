@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/21 22:47:04 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:16:59 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ typedef struct s_variables
 }			t_variables;
 
 void	initialize_variables(t_variables *var);
-void	draw_scren(t_variables *var);
+void	draw_scren(t_variables *var, double zoom);
 
 #endif
