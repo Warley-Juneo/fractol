@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_variable.c                              :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/21 19:44:52 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "mlx_int.h"
 
-void	initialize_variables(t_variables *var)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	var->row = 0;
-	var->col = 0;
-	var->c_re = 0;
-	var->c_im = 0;
-	var->iteration = 0;
-	var->max = 200;
-	var->x = 0;
-	var->y = 0;
-	var->row = 0;
-	var->max = 50;
+	XCloseDisplay(xvar->display);
 }
