@@ -6,58 +6,58 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:55 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/22 17:21:00 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/27 12:15:23 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static double	ft_pow(double number, double pow)
-{
-	return (number * pow);
-}
-
-static double	ft_complex(t_variables *var)
-{
-	return (ft_pow(var->x, 2) + ft_pow(var->y, 2));
-}
+static inline void	screen_to_world(t_variables *var, double *world_x, double *world_y)
+	{
+		*world_x = ((float)var->row) / var->scale + var->x;
+		*world_y = ((float)var->col) / var->scale + var->y;
+	}
 
 void	draw_frac(t_variables *var)
 {
-	while (ft_complex(var) <= 4 && var->iteration < var->max)
+	double x2 = 0, y2 = 0;
+	double real = 0;
+	double imag = 0;
+	int i = 0;
+	double c_imag, c_real;
+
+	screen_to_world(var, &c_real, &c_imag);
+	while (x2 + y2 <= 4 && i < var->max_iter)
 	{
-		var->x_new = ft_pow(var->x, var->x) - ft_pow(var->y, var->y);
-		var->y = 2 * var->x * var->y + var->c_im;
-		var->x = var->x_new + var->c_re;
-		var->iteration++;
+		imag = (real + real) * imag + c_imag;
+		real = x2 - y2 + c_real;
+		x2 = real * real;
+		y2 = imag * imag;
+		i++;
 	}
-	if (var->iteration < 15)
-		var->img.data[var->col * var->zoom_max + var->row] \
+	if (i < 15)
+		var->img.data[var->col * IMG_WIDTH + var->row] \
 		= 0x00008B;
-	else if (var->iteration > 15 && var->iteration <= 25)
-		var->img.data[var->col * var->zoom_max + var->row] \
+	else if (i > 15 && i <= 25)
+		var->img.data[var->col * IMG_WIDTH + var->row] \
 		= 0xFF00FF;
-	else if (var->iteration > 25 && var->iteration < var->max)
-		var->img.data[var->col * var->zoom_max + var->row] \
+	else if (i > 25 && i < var->max_iter)
+		var->img.data[var->col * IMG_WIDTH + var->row] \
 		= 0xFFFF00;
 	else
-		var->img.data[var->col * var->zoom_max + var->row] = 0x000000;
-	var->col++;
+		var->img.data[var->col * IMG_WIDTH + var->row] = 0x000000;
 }
 
-void	draw_scren(t_variables *var, double zoom)
+void	draw_scren(t_variables *var)
 {
-	while (var->row < var->zoom_max)
+	var->row = 0;
+
+	while (var->row < IMG_WIDTH)
 	{
 		var->col = 0;
-		while (var->col < var->zoom_max)
+		while (var->col < IMG_WIDTH)
 		{
-			var->c_re = (var->row - var->zoom_max / 2.0) * 4.0 / (700 + zoom);
-			var->c_im = (var->col - var->zoom_max / 2.0) * 4.0 / (700 + zoom);
-			var->x = 0;
-			var->y = 0;
-			var->iteration = 0;
 			draw_frac(var);
+			var->col++;
 		}
 		var->row++;
 	}

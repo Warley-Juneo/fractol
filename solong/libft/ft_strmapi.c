@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_variable.c                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/27 11:41:58 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2021/08/10 03:44:34 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/08/11 20:01:18 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void	initialize_variables(t_variables *var)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	var->row = 0;
-	var->c_re = 0;
-	var->c_im = 0;
-	var->iteration = 0;
-	var->max_iter = 50;
-	var->row = 0;
-	var->mouse = 1;
-	var->x = -1.5;
-	var->y = 1.0;
-	var->scale = 300;
+	char	*string;
+	size_t	s_len;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	string = ft_strdup((char *)s);
+	if (!string)
+		return (ft_strdup(""));
+	i = 0;
+	while (s[i])
+	{
+		string[i] = f(i, s[i]);
+		i++;
+	}
+	return (string);
 }

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_variable.c                              :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/27 11:41:58 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2021/08/07 14:58:53 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/08/11 18:51:52 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
+#include "unistd.h"
+#include <stdio.h>
+#include <fcntl.h>
 
-void	initialize_variables(t_variables *var)
+void	ft_putchar_fd(char c, int fd)
 {
-	var->row = 0;
-	var->c_re = 0;
-	var->c_im = 0;
-	var->iteration = 0;
-	var->max_iter = 50;
-	var->row = 0;
-	var->mouse = 1;
-	var->x = -1.5;
-	var->y = 1.0;
-	var->scale = 300;
+	write(fd, &c, 1);
 }

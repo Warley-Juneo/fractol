@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_variable.c                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/27 11:41:58 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2021/08/10 03:43:58 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/08/10 03:44:00 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void	initialize_variables(t_variables *var)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	var->row = 0;
-	var->c_re = 0;
-	var->c_im = 0;
-	var->iteration = 0;
-	var->max_iter = 50;
-	var->row = 0;
-	var->mouse = 1;
-	var->x = -1.5;
-	var->y = 1.0;
-	var->scale = 300;
+	char	*new_string;
+
+	if (!s1 || !s2)
+		return (NULL);
+	new_string = (char *) ft_calloc((ft_strlen(s1)
+				+ ft_strlen(s2) + 1), sizeof(char));
+	if (!new_string)
+		return (NULL);
+	ft_strlcpy(new_string, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(&(new_string[ft_strlen(s1)]), s2, ft_strlen(s2) + 1);
+	return (new_string);
 }
