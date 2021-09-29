@@ -6,22 +6,23 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/27 12:13:03 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/28 22:05:11 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define WIN_WIDTH 600
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 700
+# define WIN_HEIGHT 700
 
-# define IMG_WIDTH 600
-# define IMG_HEIGHT 600
+# define IMG_WIDTH 700
+# define IMG_HEIGHT 700
 
 #include "./minilibx/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct	s_img
 {
@@ -40,7 +41,6 @@ typedef struct	s_mlx
 
 typedef struct s_variables
 {
-	double	x_new;
 	double	c_re;
 	double	c_im;
 	int		max_iter;
@@ -50,7 +50,15 @@ typedef struct s_variables
 	int		row;
 	int		col;
 	int		mouse;
-	double scale;
+	double	scale;
+	int		m_x2;
+	int		m_y2;
+	int		i;
+	int		r;
+	int		g;
+	int		b;
+	int		h;
+	unsigned int		colors[255];
 
 	t_img	img;
 	t_mlx	*mlx;
@@ -59,5 +67,9 @@ typedef struct s_variables
 
 void	initialize_variables(t_variables *var);
 void	draw_scren(t_variables *var);
-
+void	screen_to_world(t_variables *var, double *world_x, double *world_y);
+void	generate_colors(t_variables *fractol);
+void	zoom_aplication(t_variables *var, float factor);
+int		mouse_event(int keycode, int x, int y, t_variables *var);
+void	scree_to_julia(t_variables *var, double *world_x, double *world_y);
 #endif

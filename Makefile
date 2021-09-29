@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/09/21 21:26:53 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/09/28 21:56:32 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIBFT			= $(LIBFT_PATH)/libft.a
 MINILIBX_PATH	=./minilibx
 MINILIBX	= $(MINILIBX_PATH)/libmlx.a
 
-SOURCE			= fractol.c draw_scren.c initialize_variable.c
+SOURCE			= fractol.c draw_scren.c initialize_variable.c aux.c
+SOURCE			+= generate_colors.c mouse_event.c
 
 
 OBJECTS			= $(SOURCE:.c=.o)
@@ -54,7 +55,7 @@ fclean:			clean
 re: fclean all
 
 run:
-				clang -Wall -Werror -Wextra *c ./minilibx/libmlx.a -L. -lXext -L. -lX11 && ./a.out
+				clang -O3 -Wall -Werror -Wextra -g3 *c ./minilibx/libmlx.a -L. -lXext -L. -lX11 && ./a.out
 
 norm:
 				norminette *c && norminette ./libft/*c

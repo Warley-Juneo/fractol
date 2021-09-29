@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/27 12:12:51 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/09/28 22:06:26 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,50 +30,32 @@ void	window_init(t_variables *var)
 	WIN_HEIGHT, "fractol");
 }
 
-// void	zoom_aplication(t_variables *var, float factor)
-// {
-// 	int x;
-// 	int y;
-// 	double mouse_x_before_zoom;
-// 	double mouse_y_before_zoom;
-// 	double mouse_x_after_zoom;
-// 	double mouse_y_after_zoom;
-
-// 	mlx_mouse_get_pos(var->mlx->mlx_ptr, var->mlx->win, &x, &y);
-// 	mouse_x_before_zoom = ((float)x) / var->scale + var->x;
-// 	mouse_y_before_zoom = ((float)y) / var->scale + var->y;
-// 	var->scale *= factor;
-// 	mouse_x_after_zoom = ((float)x) / var->scale + var->x;
-// 	mouse_y_after_zoom = ((float)y) / var->scale + var->y;
-// 	var->x += mouse_x_before_zoom - mouse_x_after_zoom;
-// 	var->y += mouse_y_before_zoom - mouse_y_after_zoom;
-// }
-
-// int	mouse_event(int keycode, int x, int y, t_variables *var)
-// {
-// 	(void)x;
-// 	(void)y;
-
-// 	if (keycode == 4)
-// 		zoom_aplication(var, .9);
-// 	else
-// 		zoom_aplication(var, 1.1);
-// 	return (0);
-// }
+int	exit_event(int keycode, t_variables *var)
+{
+	(void )var;
+	if (keycode == 65307)
+	{
+		mlx_destroy_image(var->mlx->mlx_ptr, var->img.img_ptr);
+		mlx_destroy_window(var->mlx->mlx_ptr, var->mlx->win);
+		mlx_destroy_display(var->mlx->mlx_ptr);
+		free(var->mlx->mlx_ptr);
+		exit(1);
+	}
+	return (0);
+}
 
 int	main(void)
 {
 	t_variables	*var;
 
 	var = malloc(sizeof(t_variables) * 1);
-	var->mlx = malloc(sizeof(void *) * 1);
+	var->mlx = malloc(sizeof(t_mlx *) * 1);
 	initialize_variables(var);
 	window_init(var);
 	img_init(var);
 	draw_scren(var);
-	mlx_put_image_to_window(var->mlx->mlx_ptr, var->mlx->win, \
-	var->img.img_ptr, 0, +0);
-	// mlx_mouse_hook(var->mlx->win, mouse_event, var);
+	mlx_mouse_hook(var->mlx->win, mouse_event, var);
+	mlx_key_hook(var->mlx->win, exit_event, var);
 	mlx_loop(var->mlx->mlx_ptr);
-	return (0);
+	exit(1);
 }

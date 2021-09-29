@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_variable.c                              :+:      :+:    :+:   */
+/*   aux.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/28 20:58:56 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2021/09/28 17:57:10 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/09/28 21:54:16 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	initialize_variables(t_variables *var)
+void	screen_to_world(t_variables *var, double *world_x, double *world_y)
 {
-	var->row = 0;
-	var->c_re = 0;
-	var->c_im = 0;
-	var->iteration = 0;
-	var->max_iter = 150;
-	var->row = 0;
-	var->mouse = 1;
-	var->x = -1.5;
-	var->y = -1.0;
-	var->scale = 250;
-	var->i = 0;
-	var->r = 0;
-	var->g = 0;
-	var->b = 0;
-	var->h = 0;
-	generate_colors(var);
+	*world_x = ((float)var->row) / var->scale + var->x;
+	*world_y = ((float)var->col) / var->scale + var->y;
+}
+
+void	scree_to_julia(t_variables *var, double *world_x, double *world_y)
+{
+	*world_x = 1.5 * (var->row - IMG_WIDTH / 2) / \
+	(0.5 * 1 * IMG_WIDTH) + 0;
+	*world_y = 1.0*(var->col - IMG_WIDTH/2)/(0.5* 1*IMG_HEIGHT) +  0;
 }
