@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/09/28 22:05:11 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/10/01 20:20:29 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_variables
 	int		b;
 	int		h;
 	unsigned int		colors[255];
+	int		indentify;
 
 	t_img	img;
 	t_mlx	*mlx;

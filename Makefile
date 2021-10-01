@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/09/28 21:56:32 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/10/01 20:31:35 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ fclean:			clean
 re: fclean all
 
 run:
-				clang -O3 -Wall -Werror -Wextra -g3 *c ./minilibx/libmlx.a -L. -lXext -L. -lX11 && ./a.out
+				clang -Wall -Werror -Wextra -O3 *c ./minilibx/libmlx.a -L. -lXext -L. -lX11 && ./a.out
 
 norm:
 				norminette *c && norminette ./libft/*c
