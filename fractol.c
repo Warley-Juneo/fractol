@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/11/08 17:25:05 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:29:46 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ int	main(int argc, char **argv)
 		}
 	}
 	if (argv[1][0] == 'B')
-	{
 		var->indentify = 2;
-		var->c_im = var->row / var->scale + var->m_y2;
-		var->c_re = var->col / var->scale + var->m_x2;
-	}
 	window_init(var);
 	img_init(var);
 	draw_scren(var);
