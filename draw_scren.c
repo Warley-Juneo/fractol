@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:55 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/11/08 17:36:20 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:38:20 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	draw_burnishp(t_variables *var)
 	while ((real * real) + (imag * imag) <= 4 && i < var->max_iter)
 	{
 		aux = (real * real) - (imag * imag) + var->c_re;
-		imag = ft_abs((2.0 * real * imag)) + var->c_im;
+		imag = ft_abs((3.0 * real * imag)) + var->c_im;
 		real = aux;
 		i++;
 	}
