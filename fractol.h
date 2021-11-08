@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/10/01 20:20:29 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/10/05 16:40:50 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define IMG_HEIGHT 700
 
 #include "./minilibx/mlx.h"
+#include "./libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -73,4 +74,5 @@ void	generate_colors(t_variables *fractol);
 void	zoom_aplication(t_variables *var, float factor);
 int		mouse_event(int keycode, int x, int y, t_variables *var);
 void	scree_to_julia(t_variables *var, double *world_x, double *world_y);
+double	ft_atod(const char *nptr);
 #endif

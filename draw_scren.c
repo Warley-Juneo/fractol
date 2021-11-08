@@ -6,11 +6,18 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:55 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/10/01 20:28:32 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:17:43 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int    ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
 
 void	draw_frac(t_variables *var)
 {
@@ -43,9 +50,8 @@ void	draw_julia(t_variables *var)
 	double real = 0;
 	double imag = 0;
 	int i = 0;
-	double x2 = 0, y2 = 02;
+	double x2 = 0, y2 = 0;
 
-	// printf("%f - %f\n", var->c_im, var->c_re);
 	real = var->row / var->scale + var->x;
 	imag = var->col / var->scale + var->y;
 	x2 = real * real;
@@ -57,6 +63,27 @@ void	draw_julia(t_variables *var)
 		real = x2 - y2 + var->c_re;
 		x2 = real * real;
 		y2 = imag * imag;
+		i++;
+	}
+	var->img.data[var->col * IMG_WIDTH + var->row] = var->colors[i];
+}
+
+void	draw_burnishp(t_variables *var)
+{
+	double	aux;
+	double	real;
+	double	imag;
+	int		i;
+
+	real = 0;
+	imag = 0;
+	i = 0;
+	screen_to_world(var, &var->c_re, &var->c_im);
+	while ((real * real) + (imag * imag) <= 4 && i < var->max_iter)
+	{
+		aux = (real * real) - (imag * imag) + var->c_re;
+		imag = ft_abs((2.0 * real * imag)) + var->c_im;
+		real = aux;
 		i++;
 	}
 	var->img.data[var->col * IMG_WIDTH + var->row] = var->colors[i];
@@ -74,6 +101,8 @@ void	draw_scren(t_variables *var)
 				draw_julia(var);
 			else if (var->indentify == 0)
 				draw_frac(var);
+			else if (var->indentify == 2)
+				draw_burnishp(var);
 			var->col++;
 		}
 		var->row++;

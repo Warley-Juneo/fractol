@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:48 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/10/01 20:30:19 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/10/02 16:47:13 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	initialize_variables(t_variables *var)
 {
 	var->row = 0;
-	var->c_re = -0.8;
-	var->c_im = 0.156;
+	var->c_re = -0.70176;
+	var->c_im = 0.3842;
 	var->iteration = 0;
 	var->max_iter = 50;
 	var->row = 0;

@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/10/01 20:30:05 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:19:39 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,24 @@ int	main(int argc, char **argv)
 	var->mlx = malloc(sizeof(t_mlx) * 1);
 	initialize_variables(var);
 
-	if (argc < 2 || (argv[1][0] != 'J' && argv[1][0] != 'M'))
+	if (argc < 2 || (argv[1][0] != 'J' && argv[1][0] != 'M' && argv[1][0] != 'B'))
 	{
 		printf("Define um parametro para vizualizar um tipo de fractol\n");
 		printf("Digite 'M' para mandelbroth Ou 'J' para o Julia\n");
 		printf("Caso você escolha o julia, você também pode passar parametros para o valor imaginario/real consecutivamente");
-		return (0);
+		exit(1);
 	}
 	if (argv[1][0] == 'J')
 	{
 		var->indentify = 1;
-		// if (argv[2])
-		// 	var->c_im = argv[2][0];
-		// if (argv[3])
-		// 	var->c_re = argv[3][0];
+		if (argv[2] && argc > 2)
+		{
+			var->c_im = ft_atod(argv[2]);
+		}
+		if (argv[3] && argc > 2)
+		{
+			var->c_re = ft_atod(argv[3]);
+		}
 	}
 	window_init(var);
 	img_init(var);
