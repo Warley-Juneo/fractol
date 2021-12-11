@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_scren.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:55 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/11/08 17:40:57 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:52:01 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int    ft_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
-}
 
 void	draw_frac(t_variables *var)
 {
@@ -46,20 +39,24 @@ void	draw_frac(t_variables *var)
 
 void	draw_julia(t_variables *var)
 {
-	double R = 4;
-	double real = 0;
-	double imag = 0;
-	int i = 0;
-	double x2 = 0, y2 = 0;
+	double	real;
+	double	imag;
+	int		i;
+	double	x2;
+	double	y2;
 
+	real = 0;
+	imag = 0;
+	i = 0;
+	x2 = 0;
+	y2 = 0;
 	real = var->row / var->scale + var->x;
 	imag = var->col / var->scale + var->y;
 	x2 = real * real;
 	y2 = imag * imag;
-
-	while (x2 + y2 <= R && i < var->max_iter)
+	while (x2 + y2 <= 4.0 && i < var->max_iter)
 	{
-		imag =  (real + real) * imag + var->c_im;
+		imag = (real + real) * imag + var->c_im;
 		real = x2 - y2 + var->c_re;
 		x2 = real * real;
 		y2 = imag * imag;
@@ -82,7 +79,7 @@ void	draw_burnishp(t_variables *var)
 	while ((real * real) + (imag * imag) <= 4 && i < var->max_iter)
 	{
 		aux = (real * real) - (imag * imag) + var->c_re;
-		imag = ft_abs((2.0 * real * imag)) + var->c_im;
+		imag = fabs((2.0 * real * imag)) + var->c_im;
 		real = aux;
 		i++;
 	}

@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 17:57:10 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/11 18:48:19 by wjuneo-f         ###   ########.fr       */
+/*   Created: 2021/12/10 00:03:26 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/12/11 19:58:07 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	screen_to_world(t_variables *var, double *world_x, double *world_y)
+int	check_argument(int argc, char **argv, t_variables *var)
 {
-	*world_x = ((float)var->row) / var->scale + var->x;
-	*world_y = ((float)var->col) / var->scale + var->y;
+	if (argv[1][0] == 'J')
+	{
+		var->indentify = 1;
+		if (argv[2] && argc > 2)
+		{
+			if (ft_atod(argv[2]) != -1)
+				var->c_im = ft_atod(argv[2]);
+			else
+				exit(1);
+		}
+		if (argv[3] && argc > 2)
+		{
+			if (ft_atod(argv[3]) != -1)
+				var->c_re = ft_atod(argv[3]);
+			else
+				exit(1);
+		}
+	}
+	return (0);
 }

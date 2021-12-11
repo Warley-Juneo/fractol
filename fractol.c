@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/11/08 17:29:46 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/11 19:41:05 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minilibx/mlx.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include "fractol.h"
 
 void	img_init(t_variables *var)
@@ -50,31 +47,17 @@ int	main(int argc, char **argv)
 {
 	t_variables	*var;
 
+	if (argc < 2 || (argv[1][0] != 'J' && argv[1][0] != 'M' && argv[1][0]
+	!='B'))
+	{
+		printf("digite 'M', 'J' ou 'B' para mandelbroth, Julia ou Burniship \
+		respectivamente, Você pode digitar parametros para o Julia. Real/Imag");
+		exit(1);
+	}
 	var = malloc(sizeof(t_variables) * 1);
 	var->mlx = malloc(sizeof(t_mlx) * 1);
 	initialize_variables(var);
-
-	if (argc < 2 || (argv[1][0] != 'J' && argv[1][0] != 'M' && argv[1][0] != 'B'))
-	{
-		printf("Define um parametro para vizualizar um tipo de fractol\n");
-		printf("Digite 'M' para mandelbroth Ou 'J' para o Julia\n");
-		printf("Caso você escolha o julia, você também pode passar parametros para o valor imaginario/real consecutivamente");
-		exit(1);
-	}
-	if (argv[1][0] == 'J')
-	{
-		var->indentify = 1;
-		if (argv[2] && argc > 2)
-		{
-			var->c_im = ft_atod(argv[2]);
-		}
-		if (argv[3] && argc > 2)
-		{
-			var->c_re = ft_atod(argv[3]);
-		}
-	}
-	if (argv[1][0] == 'B')
-		var->indentify = 2;
+	check_argument(argc, argv, var);
 	window_init(var);
 	img_init(var);
 	draw_scren(var);

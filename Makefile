@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/10/05 18:07:03 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/12/11 18:57:16 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MINILIBX_PATH	=./minilibx
 MINILIBX	= $(MINILIBX_PATH)/libmlx.a
 
 SOURCE			= fractol.c draw_scren.c initialize_variable.c aux.c
-SOURCE			+= generate_colors.c mouse_event.c ft_atod.c
+SOURCE			+= generate_colors.c mouse_event.c ft_atod.c check_arguments.c
 
 
 OBJECTS			= $(SOURCE:.c=.o)
@@ -70,7 +70,7 @@ fclean:			clean
 re: fclean all
 
 run:
-				clang -Wall -Werror -Wextra -O3 *c ./libft/libft.a ./minilibx/libmlx.a -L. -lXext -L. -lX11
+				clang -Wall -Werror -Wextra -O3 *c ./libft/libft.a ./minilibx/libmlx.a -L. -lXext -L. -lX11 -lm
 
 norm:
 				norminette *c && norminette ./libft/*c
