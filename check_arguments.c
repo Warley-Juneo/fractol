@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 00:03:26 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/11 19:58:07 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/11 20:33:37 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int	check_argument(int argc, char **argv, t_variables *var)
 				exit(1);
 		}
 	}
+	if (argv[1][0] == 'B')
+		var->indentify = 2;
 	return (0);
 }
