@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 07:32:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/11 20:04:14 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:14:53 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ double	ft_atod(const char *nptr)
 			signal = -1;
 		i++;
 	}
-while (ft_isdigit(nptr[i]) || nptr[i] == '.')
+	while (ft_isdigit(nptr[i]) || nptr[i] == '.')
 	{
 		if (nptr[i] == '.')
 			i++;

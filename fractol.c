@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/11 20:33:51 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/11 22:18:10 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ int	exit_event(int keycode, t_variables *var)
 	return (0);
 }
 
+int	invalid_args(t_variables *var)
+{
+	free(var->mlx);
+	free(var);
+	exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_variables	*var;
@@ -57,6 +64,11 @@ int	main(int argc, char **argv)
 	var = malloc(sizeof(t_variables) * 1);
 	var->mlx = malloc(sizeof(t_mlx) * 1);
 	initialize_variables(var);
+	if (argv[1][0] == 'J' && argv[2] && argv[3])
+	{
+		if (ft_verify_param(argv) == 0)
+			invalid_args(var);
+	}
 	check_argument(argc, argv, var);
 	window_init(var);
 	img_init(var);

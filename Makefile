@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/12/11 18:57:16 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/12/11 20:35:48 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MINILIBX	= $(MINILIBX_PATH)/libmlx.a
 
 SOURCE			= fractol.c draw_scren.c initialize_variable.c aux.c
 SOURCE			+= generate_colors.c mouse_event.c ft_atod.c check_arguments.c
-
+SOURCE			+= check_param.c
 
 OBJECTS			= $(SOURCE:.c=.o)
 

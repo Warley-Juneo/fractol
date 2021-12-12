@@ -1,75 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_param.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/11 21:55:31 by wjuneo-f          #+#    #+#             */
+/*   Updated: 2021/12/11 22:13:57 by wjuneo-f         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-static int	ft_point_valid(char *number)
+static int	ft_verify_true(char c)
 {
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	while (number[i])
-	{
-		i++;
-		if (number[i] == '.')
-		{
-			c++;
-		}
-	}
-	if (c <= 1)
+	if (c == '.')
 		return (1);
-	else
-		return (0);
+	if (ft_isdigit(c))
+		return (1);
+	return (0);
 }
 
-static int	ft_only_digit(char *number)
+int	ft_verify_param(char **argv)
 {
-	int	i;
-	int	c;
-	int	v;
+	char	*param;
+	int		count;
+	int		count2;
+	int		i;
 
-	i = 0;
-	c = 0;
-	v = 0;
-	while (number[i])
+	count = 1;
+	while (++count < 4)
 	{
-		if (number[0] == '-' || number[0] == '+')
+		i = 0;
+		param = argv[count];
+		count2 = 0;
+		if (param[count2] == '-' || param[count2] == '+')
+			count2++;
+		while (param[count2])
 		{
-			v++;
-			i++;
+			if (param[count2] == '.')
+				i++;
+			if (i > 1)
+				return (0);
+			if (ft_verify_true(param[count2]) == 0)
+				return (0);
+		count2++;
 		}
-		if (number[i] == '.')
-			v ++;
-		c += ft_isdigit(number[i]);
-		i++;
 	}
-	if (c == (int)ft_strlen(number) - v)
-		return (1);
-	else
-		return (0);
-}
-
-// static int	ft_valid_len(int number)
-// {
-// 	if (number == 2 || number == 4)
-// 		return (1);
-// 	else
-// 		return (0);
-// }
-
-int	ft_verify_param(char **argv, int argc)
-{
-	if ((argc == 4 && (argv[1][0] == 'j' || argv[1][0] == 'J')))
-	{
-		if (!ft_only_digit(argv[2]) || !ft_only_digit(argv[3]))
-			return (0);
-		if (!ft_point_valid(argv[2]) ||  !ft_point_valid(argv[3]))
-			return (0);
-		return (1);
-	}
-	else if ((argc == 2) && (argv[1][0] == 'b' || argv[1][0] == 'B'))
-		return (1);
-	else if ((argc == 2) && (argv[1][0] == 'm' || argv[1][0] == 'M'))
-		return (1);
-	else
-		return (0);
+	return (1);
 }
