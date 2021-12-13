@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/13 19:27:52 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:35:40 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,8 @@ int	key_event(int keycode, t_variables *var)
 {
 	(void )var;
 
-	if (keycode == 119 || keycode == 65362)
-	{
-		var->y += (ft_abs(var->y /var->scale) * -1);
-		draw_scren(var);
-	}
-	else if (keycode == 115 || keycode == 65364)
-	{
-		var->y -= (ft_abs(var->y /var->scale) * -1);
-		draw_scren(var);
-	}
-	else if (keycode == 97 || keycode == 65361)
-	{
-		var->x += (ft_abs(var->x /var->scale) * -1);
-		draw_scren(var);
-	}
-	else if (keycode == 100 || keycode == 65363)
-	{
-		var->x -= (ft_abs(var->x /var->scale) * -1);
-		draw_scren(var);
-	}
-
-	else if (keycode == 65307)
+	apply_comands(keycode, var);
+	if (keycode == 65307)
 	{
 		mlx_destroy_image(var->mlx->mlx_ptr, var->img.img_ptr);
 		mlx_destroy_window(var->mlx->mlx_ptr, var->mlx->win);

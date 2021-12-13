@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:41:43 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/11 22:02:20 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:35:15 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void	scree_to_julia(t_variables *var, double *world_x, double *world_y);
 double	ft_atod(const char *nptr);
 int		check_argument(int argc, char **argv, t_variables *var);
 int		ft_verify_param(char **argv);
+int		apply_comands(int keycode, t_variables *var);
 #endif
