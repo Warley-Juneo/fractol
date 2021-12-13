@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 17:57:30 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/13 19:40:25 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:43:47 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,23 @@ int	apply_comands(int keycode, t_variables *var)
 {
 	if (keycode == 119 || keycode == 65362)
 	{
-		var->y += (fabs(var->y /var->scale) * -1);
+		var->y += (fabs(var->y / var->scale) * -1);
 		draw_scren(var);
 	}
 	else if (keycode == 115 || keycode == 65364)
 	{
-		var->y -= (fabs(var->y /var->scale) * -1);
+		var->y -= (fabs(var->y / var->scale) * -1);
 		draw_scren(var);
 	}
 	else if (keycode == 97 || keycode == 65361)
 	{
-		var->x += (fabs(var->x /var->scale) * -1);
+		var->x += (fabs(var->x / var->scale) * -1);
 		draw_scren(var);
 	}
 	else if (keycode == 100 || keycode == 65363)
 	{
-		var->x -= (fabs(var->x /var->scale) * -1);
+		var->x -= (fabs(var->x / var->scale) * -1);
 		draw_scren(var);
 	}
-
 	return (0);
 }

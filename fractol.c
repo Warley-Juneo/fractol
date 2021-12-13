@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/13 19:35:40 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/13 19:43:39 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	window_init(t_variables *var)
 
 int	key_event(int keycode, t_variables *var)
 {
-	(void )var;
-
 	apply_comands(keycode, var);
 	if (keycode == 65307)
 	{
