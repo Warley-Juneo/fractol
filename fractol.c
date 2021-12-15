@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 19:39:32 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2021/12/13 19:43:39 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2021/12/14 02:13:59 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	main(int argc, char **argv)
 {
 	t_variables	*var;
 
-	if (argc < 2 || (argv[1][0] != 'J' && argv[1][0] != 'M' && argv[1][0]
-	!='B'))
+	if (((argc != 2 && argc != 4) || argv[1][1] || (argv[1][0] != 'J' && \
+	argv[1][0] != 'M' && argv[1][0] != 'B')))
 	{
 		printf("digite 'M', 'J' ou 'B' para mandelbroth, Julia ou Burniship \
 		respectivamente, Você pode digitar parametros para o Julia. Real/Imag");

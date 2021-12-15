@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.brr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/21 19:41:51 by wjuneo-f          #+#    #+#              #
-#    Updated: 2021/12/11 20:35:48 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2021/12/13 21:04:59 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ WHITE       = \033[1;37m
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(MINILIBX) $(OBJECTS) $(HEADER)
-		$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(MINILIBX) $(MLXFLAGS) -lm -o $(NAME)
 		echo "$(GREEN)Project successfully compiled"
 
 $(LIBFT):
@@ -70,7 +70,7 @@ fclean:			clean
 re: fclean all
 
 run:
-				clang -Wall -Werror -Wextra -O3 *c ./libft/libft.a ./minilibx/libmlx.a -L. -lXext -L. -lX11 -lm
+				clang -Wall -Werror -Wextra -O3 *c ./libft/libft.a ./minilibx/libmlx.a -L. -lXext -L. -lX11 -o fractol
 
 norm:
 				norminette *c && norminette ./libft/*c
